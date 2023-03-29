@@ -36,7 +36,7 @@ struct GameHome: View {
                     .padding(.bottom, -500.0)
                 }
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 
