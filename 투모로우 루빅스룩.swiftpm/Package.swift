@@ -8,13 +8,13 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "MC1_eighteeing",
+    name: "투모로우 루빅스룩",
     platforms: [
         .iOS("15.2")
     ],
     products: [
         .iOSApplication(
-            name: "MC1_eighteeing",
+            name: "투모로우 루빅스룩",
             targets: ["AppModule"],
             bundleIdentifier: "com.eighteeing.mc1.MC1-eighteeing",
             displayVersion: "1.0",
@@ -30,7 +30,8 @@ let package = Package(
                 .landscapeRight,
                 .landscapeLeft,
                 .portraitUpsideDown(.when(deviceFamilies: [.pad]))
-            ]
+            ],
+            appCategory: .games
         )
     ],
     targets: [
