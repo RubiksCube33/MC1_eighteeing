@@ -4,7 +4,13 @@ import SwiftUI
 struct MyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GameHome()
         }
+    }
+}
+
+struct MyApp_Previews: PreviewProvider {
+    static var previews: some View {
+        GameHome()
     }
 }

@@ -1,6 +1,20 @@
+import Foundation
 import SwiftUI
+import Combine
+
+class MyTimer: ObservableObject {
+    @Published var value: Int = 0
+    
+    init() {
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            self.value += 1
+        }
+    }
+}
 
 struct GameStart: View {
+    @ObservedObject var myTimer = MyTimer()
+    
     var body: some View {
         ZStack{
             Image("background")
@@ -30,7 +44,7 @@ struct GameStart: View {
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
+struct GameStart_Previews: PreviewProvider {
     static var previews: some View {
         GameStart()
     }
