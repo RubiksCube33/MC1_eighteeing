@@ -39,7 +39,7 @@ struct GameStart: View {
             }
         }.navigationBarBackButtonHidden(true)
             .onAppear{
-                Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
                     isGameStarted = false
                 }
             }
