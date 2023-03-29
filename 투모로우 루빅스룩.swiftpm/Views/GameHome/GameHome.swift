@@ -6,7 +6,7 @@ struct CustomColor{
 
 struct GameHome: View {
     
-    @State private var isBtnClicked: Bool = false
+    @State var isGameStarted: Bool = false
     
     var body: some View {
         NavigationView(){
@@ -25,7 +25,7 @@ struct GameHome: View {
                         .padding(.top, -30)
                         .padding(.bottom, 25)
 
-                    NavigationLink(destination: GameStart()){
+                    NavigationLink(destination: GameStart(isGameStarted: $isGameStarted), isActive: $isGameStarted){
                         Text("Game Start")
                             .padding(.init(top: 14, leading: 54, bottom: 14, trailing: 54))
                             .background(.black)
