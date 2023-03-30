@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct GameResultView: View {
+    
+    @Binding var isGameStarted: Bool
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -16,7 +19,7 @@ struct GameResultView: View {
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
                 VStack{
-                    Text("루빅이 입은 모습이에요 😎")
+                    Text("루빅이 입은 모습이예요 😎")
                         .font(.title3)
                         .fontWeight(.bold)
                         .padding(.top, 70.0)
@@ -26,7 +29,7 @@ struct GameResultView: View {
                         .aspectRatio(contentMode: .fit)
                         .padding(.top, -50.0)
                     NavigationLink {
-                        OB3View()
+                        Ending(isGameStarted: $isGameStarted)
                     } label: {
                         Text("내일의 루빅룩 확정!")
                             .padding(.init(top: 20, leading: 108, bottom: 20, trailing: 108))
@@ -52,6 +55,6 @@ struct GameResultView: View {
 
 struct GameResultView_Previews: PreviewProvider {
     static var previews: some View {
-        GameResultView()
+        GameResultView(isGameStarted: .constant(false))
     }
 }

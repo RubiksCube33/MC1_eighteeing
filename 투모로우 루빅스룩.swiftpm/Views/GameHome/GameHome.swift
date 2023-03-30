@@ -7,6 +7,8 @@ struct CustomColor{
 struct GameHome: View {
     
     @State var isGameStarted: Bool = false
+    //Home 으로 돌아올지 말지를 결정하는 변수, 뒤에 호출할 view들에 binding으로 넘겨줘야
+    //한방에 여기 화면으로 돌아올 수 있음!!
     
     var body: some View {
         NavigationView(){

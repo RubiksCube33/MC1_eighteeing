@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct Ending: View {
+    
+    @Binding var isGameStarted: Bool
+    
     var body: some View {
         ZStack {
             Image("background")
@@ -36,7 +39,7 @@ struct Ending: View {
                 .padding(.top, 10.0)
                 
                 HStack {
-                    Button(action: {/*put action here*/}, label:{
+                    Button(action: {isGameStarted = false}, label:{
                         Text("그만하기")
                         .padding(.init(top: 16, leading: 45, bottom: 16, trailing: 45))
                         .background(.white)
@@ -60,12 +63,12 @@ struct Ending: View {
                 }
                 .padding(.bottom, 60.0)
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 
 struct Ending_Previews: PreviewProvider {
     static var previews: some View {
-        Ending()
+        Ending(isGameStarted: .constant(false))
     }
 }

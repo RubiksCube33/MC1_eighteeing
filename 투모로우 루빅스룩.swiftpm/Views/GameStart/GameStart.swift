@@ -32,15 +32,15 @@ struct GameStart: View {
                         .aspectRatio(contentMode: .fit)
                         .padding(.bottom, -235.0)
                     
-                    /* NavigationLink(destination: GameHome(),isActive: $isTimeOver){
+                    NavigationLink(destination: GameResultView(isGameStarted: $isGameStarted),isActive: $isTimeOver){
                         
-                    } */
+                    }
                 }
             }
         }.navigationBarBackButtonHidden(true)
             .onAppear{
-                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
-                    isGameStarted = false
+                Timer.scheduledTimer(withTimeInterval: 1.75, repeats: false) { _ in
+                    isTimeOver = true
                 }
             }
     }
@@ -48,6 +48,6 @@ struct GameStart: View {
 
 struct GameStart_Previews: PreviewProvider {
     static var previews: some View {
-        GameHome()
+        GameStart(isGameStarted: .constant(false))
     }
 }
