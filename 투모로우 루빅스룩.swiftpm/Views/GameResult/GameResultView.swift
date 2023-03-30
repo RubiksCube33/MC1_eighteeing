@@ -10,6 +10,7 @@ import SwiftUI
 struct GameResultView: View {
     
     @Binding var isGameStarted: Bool
+    @Binding var isGameOver : Bool
     
     var body: some View {
         NavigationView {
@@ -29,7 +30,7 @@ struct GameResultView: View {
                         .aspectRatio(contentMode: .fit)
                         .padding(.top, -50.0)
                     NavigationLink {
-                        Ending(isGameStarted: $isGameStarted)
+                        Ending(isGameStarted: $isGameStarted, isGameOver: $isGameOver)
                     } label: {
                         Text("내일의 루빅룩 확정!")
                             .padding(.init(top: 20, leading: 108, bottom: 20, trailing: 108))
@@ -38,14 +39,21 @@ struct GameResultView: View {
                             .font(.system(size: 18, weight: .semibold))
                             .foregroundColor(.white)
                     }
-                    NavigationLink {
+                    Button(action: {isGameOver = false}, label:{
+                        Text("다시 꾸며 볼래요")
+                            .padding(.init(top: 11, leading: 0, bottom: 0, trailing: 0))
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundColor(.black)
+                    }).padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
+                    
+                    /*NavigationLink {
                         Ending(isGameStarted: $isGameStarted)
                     } label: {
                         Text("다시 꾸며 볼래요")
                             .padding(.init(top: 11, leading: 0, bottom: 0, trailing: 0))
                             .font(.system(size: 18, weight: .bold))
                             .foregroundColor(.black)
-                    }.padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
+                    }.padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))*/
                     
                 }
             }
@@ -55,6 +63,6 @@ struct GameResultView: View {
 
 struct GameResultView_Previews: PreviewProvider {
     static var previews: some View {
-        GameResultView(isGameStarted: .constant(false))
+        GameResultView(isGameStarted: .constant(false), isGameOver: .constant(false))
     }
 }

@@ -3,6 +3,7 @@ import SwiftUI
 struct Ending: View {
     
     @Binding var isGameStarted: Bool
+    @Binding var isGameOver : Bool
     
     var body: some View {
         ZStack {
@@ -50,7 +51,7 @@ struct Ending: View {
                     .padding(.leading)
                     .padding(.trailing, 5)
                     
-                    Button(action: {/*put action here*/}, label:{
+                    Button(action: {isGameOver = false}, label:{
                         Text("다시 도전")
                             .padding(.init(top: 16, leading: 45, bottom: 16, trailing: 45))
                         .background(.black)
@@ -69,6 +70,6 @@ struct Ending: View {
 
 struct Ending_Previews: PreviewProvider {
     static var previews: some View {
-        Ending(isGameStarted: .constant(false))
+        Ending(isGameStarted: .constant(false), isGameOver: .constant(false))
     }
 }

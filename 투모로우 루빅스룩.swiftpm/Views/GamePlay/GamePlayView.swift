@@ -45,6 +45,7 @@ class Pants: ObservableObject {
 
 struct GamePlayView: View {
     @Binding var isGameStarted: Bool
+    @State var isGameOver : Bool = false
     
     @StateObject var shirts = Shirts()
     @StateObject var pants = Pants()
@@ -139,7 +140,7 @@ struct GamePlayView: View {
                     .gesture(getDragGestureforpants())
                     
                     NavigationLink (destination:
-                        GameResultView( isGameStarted: $isGameStarted)){
+                        GameResultView( isGameStarted: $isGameStarted, isGameOver: $isGameOver),isActive: $isGameOver){
                         Text("제 픽은 이거에요!")
                             .padding(.init(top: 20, leading: 108, bottom: 20, trailing: 108))
                             .background(.black)
@@ -149,7 +150,7 @@ struct GamePlayView: View {
                     }
                 }
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
     private func getDragGestureforshirts() -> some Gesture {
            DragGesture()

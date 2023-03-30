@@ -32,7 +32,7 @@ struct GameStart: View {
                         .aspectRatio(contentMode: .fit)
                         .padding(.bottom, -235.0)
                     
-                    NavigationLink(destination: GameResultView(isGameStarted: $isGameStarted),isActive: $isTimeOver){
+                    NavigationLink(destination: GamePlayView(isGameStarted: $isGameStarted),isActive: $isTimeOver){
                         
                     }
                 }
