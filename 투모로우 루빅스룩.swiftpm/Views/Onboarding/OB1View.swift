@@ -36,7 +36,7 @@ struct OB1View: View {
                     }
                 }
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 
