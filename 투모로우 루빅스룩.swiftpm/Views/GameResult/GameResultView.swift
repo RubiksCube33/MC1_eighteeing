@@ -39,7 +39,7 @@ struct GameResultView: View {
                             .foregroundColor(.white)
                     }
                     NavigationLink {
-                        OB3View()
+                        Ending(isGameStarted: $isGameStarted)
                     } label: {
                         Text("다시 꾸며 볼래요")
                             .padding(.init(top: 11, leading: 0, bottom: 0, trailing: 0))
