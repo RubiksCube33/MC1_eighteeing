@@ -4,6 +4,8 @@ struct Ending: View {
     
     @Binding var isGameStarted: Bool
     @Binding var isGameOver : Bool
+    @Binding var activeShirtsIndex : Int
+    @Binding var activePantsIndex : Int
     
     var body: some View {
         ZStack {
@@ -23,7 +25,7 @@ struct Ending: View {
                 Text("캡쳐 후 다음 날 루빅이\n정말 똑같이 입고왔나 비교해봐요!")
                     .multilineTextAlignment(.center)
                     .padding(.top, 1)
-                    .opacity(0.5)
+                    .opacity(0.6)
                 
                 ZStack{
                     Rectangle()
@@ -31,7 +33,7 @@ struct Ending: View {
                         .foregroundColor(.white)
                         .opacity(0.25)
                         .cornerRadius(30)
-                    Image("룹기_파란4")
+                    Image("룹기_\(activePantsIndex)\(activeShirtsIndex)")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 }
@@ -70,6 +72,6 @@ struct Ending: View {
 
 struct Ending_Previews: PreviewProvider {
     static var previews: some View {
-        Ending(isGameStarted: .constant(false), isGameOver: .constant(false))
+        Ending(isGameStarted: .constant(false), isGameOver: .constant(false),activeShirtsIndex: .constant(1),activePantsIndex: .constant(1))
     }
 }

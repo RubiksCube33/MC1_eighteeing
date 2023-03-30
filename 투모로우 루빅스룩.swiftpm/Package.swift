@@ -19,8 +19,8 @@ let package = Package(
             bundleIdentifier: "com.eighteeing.mc1.MC1-eighteeing",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .car),
-            accentColor: .presetColor(.teal),
+            appIcon: .asset("AppIcon"),
+            accentColor: .presetColor(.green),
             supportedDeviceFamilies: [
                 .pad,
                 .phone

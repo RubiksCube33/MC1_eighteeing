@@ -73,22 +73,22 @@ struct OB5View: View {
                         }.padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 0.0))
                         Spacer()
                     } //메시지 1
+                VStack(alignment: .center){
                     NavigationLink {
                         GameHome()
                     } label: {
-                        VStack(alignment: .center){
-                            Text("내일의 루빅룩은?")
+                        Text("내일의 루빅룩은?")
                                 .padding(.init(top: 20, leading: 108, bottom: 20, trailing: 108))
                                 .background(.black)
                                 .clipShape(RoundedRectangle(cornerRadius: 15))
                                 .font(.system(size: 18, weight: .semibold))
                                 .foregroundColor(.white)
-                            Text("다른 러너들과 내기해봐요!")
-                                .padding(.init(top: 11, leading: 0, bottom: 0, trailing: 0))
-                                .font(.system(size: 15, weight: .semibold))
-                                .foregroundColor(Color(red: 0.229, green: 0.229, blue: 0.229))
-                        }.padding(EdgeInsets(top: 30, leading: 0, bottom: 50, trailing: 0))
                     }
+                    Text("다른 러너들과 내기해봐요!")
+                        .padding(.init(top: 11, leading: 0, bottom: 0, trailing: 0))
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundColor(Color(red: 0.229, green: 0.229, blue: 0.229))
+                }.padding(EdgeInsets(top: 30, leading: 0, bottom: 50, trailing: 0))
                 }
             }
         }.navigationBarBackButtonHidden(true)
