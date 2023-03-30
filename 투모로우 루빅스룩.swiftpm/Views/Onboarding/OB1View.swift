@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import Combine
 
 struct OB1View: View {
+    
+    @State var splashOpacity : Double = 100.0
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -34,6 +38,13 @@ struct OB1View: View {
                         }.padding(EdgeInsets(top: 0, leading: 0, bottom: 70, trailing: 32.0))
                         
                     }
+                }
+                SplashView()
+                    .opacity(splashOpacity)
+            }
+            .onAppear{
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+                    splashOpacity = 0
                 }
             }
         }.navigationBarBackButtonHidden(true)

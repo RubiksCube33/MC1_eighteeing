@@ -4,13 +4,13 @@ import SwiftUI
 struct MyApp: App {
     var body: some Scene {
         WindowGroup {
-            SplashView()
+            OB1View()
         }
     }
 }
 
 struct MyApp_Previews: PreviewProvider {
     static var previews: some View {
-        SplashView()
+        OB1View()
     }
 }

@@ -20,11 +20,11 @@ struct SplashView: View {
                 }
             }
         }.navigationBarBackButtonHidden(true)
-            .onAppear{
+            /*.onAppear{
                 Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
                     splashTimer = true
                 }
-            }
+            }*/
     }
 }
 
