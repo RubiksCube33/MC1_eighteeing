@@ -21,7 +21,7 @@ struct GameResultView: View {
                     .edgesIgnoringSafeArea(.all)
                 VStack{
                     Text("루빅이 입은 모습이예요 😎")
-                        .font(.title3)
+                        .font(.system(size: 22))
                         .fontWeight(.bold)
                         .padding(.top, 70.0)
                     Image("룹기_어두운1")

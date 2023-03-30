@@ -10,6 +10,7 @@ import SwiftUI
 struct Item: Identifiable {
     var id: Int
     var imagename: String
+    var realimagename: String
     var name: String
     var description: String
 }
@@ -24,7 +25,7 @@ class Shirts: ObservableObject {
     init() {
         shirtsitems = []
         for i in 0..<6 {
-            let new = Item(id: i, imagename: "shirts\(i+1)",name: shirtnames[i], description: shirtdescriptions[i])
+            let new = Item(id: i, imagename: "shirts\(i+1)",    realimagename: "ishirts\(i+1)",name: shirtnames[i], description: shirtdescriptions[i])
             shirtsitems.append(new)
         }
     }
@@ -40,13 +41,16 @@ class Pants: ObservableObject {
     init() {
         pantsitems = []
         for i in 0..<3 {
-            let new = Item(id: i, imagename: "pants\(i+1)",name: pantsnames[i], description: pantsdescriptions[i])
+            let new = Item(id: i, imagename: "pants\(i+1)", realimagename: "ipants\(i+1)",name: pantsnames[i], description: pantsdescriptions[i])
             pantsitems.append(new)
         }
     }
 }
 
 struct GamePlayView: View {
+    @State private var showShirtsModal = false
+    @State private var showPantsModal = false
+    
     @Binding var isGameStarted: Bool
     @State var isGameOver : Bool = false
     
@@ -68,11 +72,11 @@ struct GamePlayView: View {
                     .edgesIgnoringSafeArea(.all)
                 VStack{
                     Text("옆으로 스와이프 해서 ")
-                        .font(.title3)
+                        .font(.system(size: 22))
                         .fontWeight(.bold)
                         .padding(.top, 70.0)
                     Text("루빅룩을 골라주세요!")
-                        .font(.title3)
+                        .font(.system(size: 22))
                         .fontWeight(.bold)
                         .padding(.top, 0.0)
                     
@@ -86,17 +90,20 @@ struct GamePlayView: View {
                             
                             // article view
                             ZStack {
-                                Image(shirtsitem.imagename)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
+                                Button(action: {showShirtsModal = true}){
+                                    Image(shirtsitem.imagename)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                }
+                                
                             }
-                            .frame(width: 340, height: 180)
+                            .frame(width: 300, height: 180)
                             
                             .scaleEffect(1.0 - abs(distanceforshirts(shirtsitem.id)) * 0.2 )
                             .opacity(1.0 - abs(distanceforshirts(shirtsitem.id)) * 0.3 )
                             .offset(x: myXOffsetforshirts(shirtsitem.id), y: 0)
                             .zIndex(1.0 - abs(distanceforshirts(shirtsitem.id)) * 0.1)
-                            
+                           
                             // Here is the modifier - on the item, not on the ForEach
                             .onTapGesture {
                                 
@@ -106,20 +113,27 @@ struct GamePlayView: View {
                                     draggingShirtsItem = Double(shirtsitem.id)
                                 }
                             }
+                            
+                            
                         }
                     }
-                    .padding(.bottom, 25.0)
                     .gesture(getDragGestureforshirts())
+                    .padding(.bottom, 25.0)
+                    
                     
                     ZStack { //하의
                         ForEach(pants.pantsitems) { pantsitem in
                             
                             // article view
+                      
                             ZStack {
-                                Image(pantsitem.imagename)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
+                                Button(action: {showPantsModal = true}){
+                                    Image(pantsitem.imagename)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                }
                             }
+                            
                             .frame(width: 200, height: 250)
                             
                             .scaleEffect(1.0 - abs(distanceforpants(pantsitem.id)) * 0.2 )
@@ -135,10 +149,12 @@ struct GamePlayView: View {
                                     draggingPantsItem = Double(pantsitem.id)
                                 }
                             }
+                            
                         }
                     }
-                    .padding(.bottom, 50.0)
                     .gesture(getDragGestureforpants())
+                    .padding(.bottom, 50.0)
+                    
                     
                     NavigationLink (destination:
                         GameResultView( isGameStarted: $isGameStarted, isGameOver: $isGameOver),isActive: $isGameOver){
@@ -149,7 +165,20 @@ struct GamePlayView: View {
                             .font(.system(size: 18, weight: .semibold))
                             .foregroundColor(.white)
                     }
+                   
                 }
+                ModalView(isShowing: $showShirtsModal,
+                          name: $shirts.shirtsitems[activeShirtsIndex].name,
+                          description: $shirts.shirtsitems[activeShirtsIndex].description,
+                          image:
+                            $shirts.shirtsitems[activeShirtsIndex].realimagename
+                )
+                ModalView(isShowing: $showPantsModal,
+                          name: $pants.pantsitems[activePantsIndex].name,
+                          description: $pants.pantsitems[activePantsIndex].description,
+                          image:
+                            $pants.pantsitems[activePantsIndex].realimagename
+                )
             }
         }.navigationBarBackButtonHidden(true)
     }
