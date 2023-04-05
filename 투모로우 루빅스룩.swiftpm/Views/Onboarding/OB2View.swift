@@ -43,7 +43,7 @@ struct OB2View: View {
                     }
                 }
             }
-        }.navigationBarBackButtonHidden(true)
+        }//.navigationBarBackButtonHidden(true)
     }
 }
 
