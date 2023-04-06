@@ -4,8 +4,8 @@ struct Ending: View {
     
     @Binding var isGameStarted: Bool
     @Binding var isGameOver : Bool
-    @Binding var activeShirtsIndex : Int
-    @Binding var activePantsIndex : Int
+    let activeShirtsIndex : Int
+    let activePantsIndex : Int
     
     var body: some View {
         ZStack {
@@ -75,6 +75,6 @@ struct Ending: View {
 
 struct Ending_Previews: PreviewProvider {
     static var previews: some View {
-        Ending(isGameStarted: .constant(false), isGameOver: .constant(false),activeShirtsIndex: .constant(1),activePantsIndex: .constant(1))
+        Ending(isGameStarted: .constant(false), isGameOver: .constant(false),activeShirtsIndex: 1,activePantsIndex: 1)
     }
 }

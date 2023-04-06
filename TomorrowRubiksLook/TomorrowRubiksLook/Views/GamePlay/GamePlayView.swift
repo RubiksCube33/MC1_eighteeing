@@ -110,7 +110,7 @@ struct GamePlayView: View {
                     
                     
                     NavigationLink (destination:
-                                        GameResultView( isGameStarted: $isGameStarted, isGameOver: $isGameOver,activeShirtsIndex:$activeShirtsIndex,activePantsIndex:$activePantsIndex),isActive: $isGameOver){
+                                        GameResultView( isGameStarted: $isGameStarted, isGameOver: $isGameOver,activeShirtsIndex:activeShirtsIndex,activePantsIndex:activePantsIndex),isActive: $isGameOver){
                         Text("제 픽은 이거에요!")
                             .padding(.init(top: 20, leading: 108, bottom: 20, trailing: 108))
                             .background(.black)

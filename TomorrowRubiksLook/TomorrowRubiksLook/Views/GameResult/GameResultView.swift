@@ -11,8 +11,8 @@ struct GameResultView: View {
     
     @Binding var isGameStarted: Bool
     @Binding var isGameOver : Bool
-    @Binding var activeShirtsIndex : Int
-    @Binding var activePantsIndex : Int
+    let activeShirtsIndex : Int
+    let activePantsIndex : Int
     
     var body: some View {
         NavigationView {
@@ -32,7 +32,7 @@ struct GameResultView: View {
                         .aspectRatio(contentMode: .fit)
                         .padding(.top, -50.0)
                     NavigationLink {
-                        Ending(isGameStarted: $isGameStarted, isGameOver: $isGameOver,activeShirtsIndex:$activeShirtsIndex,activePantsIndex:$activePantsIndex)
+                        Ending(isGameStarted: $isGameStarted, isGameOver: $isGameOver,activeShirtsIndex:activeShirtsIndex,activePantsIndex:activePantsIndex)
                     } label: {
                         Text("내일의 루빅룩 확정!")
                             .padding(.init(top: 20, leading: 108, bottom: 20, trailing: 108))
@@ -55,6 +55,6 @@ struct GameResultView: View {
 
 struct GameResultView_Previews: PreviewProvider {
     static var previews: some View {
-        GameResultView(isGameStarted: .constant(false), isGameOver: .constant(false),activeShirtsIndex: .constant(1),activePantsIndex: .constant(1))
+        GameResultView(isGameStarted: .constant(false), isGameOver: .constant(false),activeShirtsIndex: 1,activePantsIndex: 1)
     }
 }
